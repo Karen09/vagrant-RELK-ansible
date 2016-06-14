@@ -1,0 +1,11 @@
+---
+es_cluster_name: elasticsearch_production
+es_data_dir: /data/elasticsearch/data
+es_logs_dir: /var/log/elasticsearch
+es_plugins_dir: /data/elasticsearch/plugins
+es_bind_host: 0.0.0.0
+es_publish_host: 0.0.0.0
+elasticsearch_cluster_hosts: '"192.168.33.10","192.168.33.11"'
+elasticsearch_master: true
+node_max_local_storage_nodes: 1
+node_data: true

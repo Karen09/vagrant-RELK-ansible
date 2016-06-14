@@ -1,0 +1,20 @@
+---
+- hosts: elastic1
+  sudo: yes
+  user: vagrant
+  gather_facts: True
+  roles:
+    - elastic
+
+- hosts: elastic2
+  sudo: yes
+  user: vagrant
+  gather_facts: True
+  roles:
+    - elastic
+
+- hosts: kibana
+  sudo: yes
+  gather_facts: True
+  roles:
+    - kibana

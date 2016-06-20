@@ -1,0 +1,15 @@
+---
+- name: Add repo file
+  template: src=nginx_centos.repo.j2 dest=/etc/yum.repos.d/nginx.repo owner=root group=root mode=0644
+
+- name: Add repo key
+  get_url: url=http://nginx.org/keys/nginx_signing.key dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-nginx force=yes
+
+- name: Add repo key
+  file: path=/etc/pki/rpm-gpg/RPM-GPG-KEY-nginx owner=root group=root mode=0644
+
+- name: Add repo key
+  rpm_key: state=present key=/etc/pki/rpm-gpg/RPM-GPG-KEY-nginx
+
+- name: Install Nginx
+  yum: name=nginx  state=present

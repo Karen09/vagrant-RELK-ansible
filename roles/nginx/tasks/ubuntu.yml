@@ -1,0 +1,21 @@
+---
+- name: Add repo file
+  template: src=nginx_ubuntu.list.j2 dest=/etc/apt/sources.list.d/nginx.list owner=root group=root mode=0644
+  register: nginx_list
+
+- name: Add repo key
+  get_url: url=http://nginx.org/keys/nginx_signing.key dest=/etc/apt/nginx.key force=yes
+
+- name: Add repo key
+  file: path=/etc/apt/nginx.key owner=root group=root mode=0644
+
+- name: Add repo key
+  apt_key: id=7BD9BF62 file=/etc/apt/nginx.key state=present
+  register: nginx_key
+
+- name: Update apt cache
+  apt: update_cache=yes
+  when: nginx_list.changed == True or nginx_key.changed == True
+
+- name: Install Nginx
+  apt: pkg=nginx state=present

@@ -1,0 +1,2 @@
+deb http://nginx.org/packages/{% if nginx_mainline %}mainline/{% endif %}ubuntu/ {{ ansible_distribution_release | lower }} nginx
+deb-src http://nginx.org/packages/{% if nginx_mainline %}mainline/{% endif %}ubuntu/ {{ ansible_distribution_release | lower }} nginx

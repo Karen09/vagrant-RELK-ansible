@@ -2,4 +2,4 @@
 kibana_bind_host: 0.0.0.0
 kibana_logs_dir: /var/log/kibana
 kibana_log_file: /var/log/kibana/kibana.log
-elasticsearch_master: 192.168.33.10
+elasticsearch_master: localhost

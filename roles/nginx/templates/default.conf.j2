@@ -1,0 +1,20 @@
+upstream elasticsearch {
+    server 192.168.33.10:9200;
+    server 192.168.33.11:9200;
+}
+
+server {
+    listen 9201;
+
+    location / {
+        proxy_pass http://elasticsearch;
+    }
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://localhost:5601;
+    }
+}

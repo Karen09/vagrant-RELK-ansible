@@ -1,5 +1,5 @@
 - name: Add Elasticsearch gpg key
-  rpm_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+  rpm_key: key=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
   tags:
     - install
 
@@ -17,4 +17,15 @@
     - elasticsearch
   tags:
     - install
+# optional part of installation to configure firewall
+- name: start firewalld
+  service: name=firewalld state=started
 
+- name: Adding Logstash and Kibana firewall rule
+  firewalld: port=9200/tcp zone=public permanent=true state=enabled 
+
+- name: Adding Elasticsearch cluster firewall rule
+  firewalld: port=9300/tcp zone=public permanent=true state=enabled
+
+- name: reload firewalld
+  service: name=firewalld state=reloaded

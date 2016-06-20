@@ -1,5 +1,5 @@
 - name: Add Elastic gpg key
-  rpm_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+  rpm_key: key=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
   tags:
     - install
 

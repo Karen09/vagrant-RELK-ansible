@@ -1,4 +1,7 @@
 ---
+- name: Disabling SElinux 
+  selinux: state=disabled
+
 - include: yum.yml
   when: ansible_os_family == 'RedHat'
   tags:
@@ -24,7 +27,7 @@
     state=present
   with_items:
     - { regexp: '^#?\s*server\.host', line: "server.host: {{ kibana_bind_host }}" }
-    - { regexp: '^#?\s*elasticsearch\.url', line: "elasticsearch.url: http://{{ elasticsearch_master }}:9200" }
+    - { regexp: '^#?\s*elasticsearch\.url', line: "elasticsearch.url: http://{{ elasticsearch_master }}:9201" }
     - { regexp: '^#?\s*logging\.dest', line: "logging.dest: {{ kibana_log_file }}" }
   notify: restart kibana
   tags:

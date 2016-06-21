@@ -19,16 +19,13 @@
   tags:
     - install
 
-- name: Initial Kibana configuration.
-  lineinfile: >
+- name: install /opt/kibana/conf/kibana.yml
+  template: >-
+    src=kibana.yml.j2
     dest=/opt/kibana/config/kibana.yml
-    regexp="{{ item.regexp }}"
-    line="{{ item.line }}"
-    state=present
-  with_items:
-    - { regexp: '^#?\s*server\.host', line: "server.host: {{ kibana_bind_host }}" }
-    - { regexp: '^#?\s*elasticsearch\.url', line: "elasticsearch.url: http://{{ elasticsearch_master }}:9201" }
-    - { regexp: '^#?\s*logging\.dest', line: "logging.dest: {{ kibana_log_file }}" }
+    owner=root
+    group=root
+    mode=0644
   notify: restart kibana
   tags:
     - install

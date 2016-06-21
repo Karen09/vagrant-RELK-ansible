@@ -53,7 +53,11 @@ path.logs: /var/log/elasticsearch
 #
 # Lock the memory on startup:
 #
+{% if es_port is defined %}
+bootstrap.mlockall: {{ bootstrap_mlockall }}
+{% else %}
 # bootstrap.mlockall: true
+{% endif %}
 #
 # Make sure that the `ES_HEAP_SIZE` environment variable is set to about half the memory
 # available on the system and that the owner of the process is allowed to use this limit.

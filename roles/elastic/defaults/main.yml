@@ -1,7 +1,7 @@
 ---
 es_cluster_name: elasticsearch_production
 es_data_dir: /data/elasticsearch/data
-elasticsearch_network_interface: eth1
+elasticsearch_network_interface: eth1  ###!!! In case of Libvirt provider change eth1 value with real value !!!###
 es_logs_dir: /var/log/elasticsearch
 es_plugins_dir: /data/elasticsearch/plugins
 es_host: 0.0.0.0
@@ -11,3 +11,4 @@ node_data: true
 es_port: 9200
 es_transport_port: 9300
 elasticsearch_minimum_master_nodes: 2
+bootstrap_mlockall: true

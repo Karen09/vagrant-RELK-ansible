@@ -1,0 +1,6 @@
+---
+- name: Ensure Epel is installed.
+  yum: name=epel-release state=installed
+
+- name: Ensure redis is installed.
+  yum: name=redis state=installed

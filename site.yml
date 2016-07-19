@@ -19,3 +19,33 @@
   roles:
     - kibana
     - nginx
+
+- hosts: logstash1
+  sudo: yes
+  gather_facts: True
+  roles:
+    - logstash
+
+- hosts: logstash2
+  sudo: yes
+  gather_facts: True
+  roles:
+    - logstash
+
+- hosts: redis1
+  sudo: yes
+  gather_facts: True
+  roles:
+    - redis
+
+- hosts: redis2
+  sudo: yes
+  gather_facts: True
+  roles:
+    - redis
+
+- hosts: tenant
+  sudo: yes
+  gather_facts: True
+  roles:
+    - tenant

@@ -1,7 +1,4 @@
 ---
-- name: Disabling SElinux 
-  selinux: state=disabled
-
 - include: yum.yml
   when: ansible_os_family == 'RedHat'
   tags:

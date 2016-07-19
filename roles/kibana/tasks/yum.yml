@@ -1,3 +1,6 @@
+- name: Disabling SElinux 
+  selinux: state=disabled
+
 - name: Add Elastic gpg key
   rpm_key: key=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
   tags:
